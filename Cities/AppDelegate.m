@@ -14,12 +14,41 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize navigationController;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+
+    self.navigationController = [[NavigationController alloc] init];
+    self.window.rootViewController = self.navigationController;
+    /*
+    self.viewController = [[The_CitiesViewController alloc] initWithNibName:nil bundle:nil managedObjectContext:self.managedObjectContext];*/
+    //self.navigationController.appDelegate = self;
+    
+    
+    
+    
+    MapController *mapController = [[MapController alloc] init];
+
+    
+    [self.navigationController pushViewController:mapController animated:YES];
+
+    
+    
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
+
+    
+    
+
+
+    //[objectManager loadObjectsAtResourcePath:@"/status/user_timeline/RestKit" delegate:self];
+
+
+
+
     return YES;
 }
 

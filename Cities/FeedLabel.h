@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FeedLabel : NSObject
+@interface FeedLabel : UILabel
 
+- (void)setupStyling;
+- (id) initWithFrame:(CGRect)frame andColor:(UIColor *)color;
 @end

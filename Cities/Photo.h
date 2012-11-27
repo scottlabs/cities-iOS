@@ -7,18 +7,53 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FeedItem.h"
+#import "AsynchronousImage.h"
+//#import "Flickr.h"
 
-@interface Photo : NSObject
 
-@property (strong, nonatomic) NSString *id;
-@property (strong, nonatomic) NSString *owner;
-@property (strong, nonatomic) NSString *secret;
-@property (strong, nonatomic) NSString *server;
-@property (strong, nonatomic) NSString *farm;
+
+@interface Photo : FeedItem {
+    float width;
+    float height;
+    float scale;
+    AsynchronousImage *async_image;
+    UIImage *image;
+    UIImageView *imageView;
+}
+
+//@property (strong, nonatomic) Flickr *flickr;
+@property (strong, nonatomic) NSString *photo_id;
+@property (strong, nonatomic) NSString *image_url;
+@property (strong, nonatomic) NSString *original_width;
+@property (strong, nonatomic) NSString *original_height;
+@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSString *license;
+//@property (strong, nonatomic) NSString *author;
+@property (strong, nonatomic) NSString *author_url;
 @property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *ispublic;
-@property (strong, nonatomic) NSString *isfriend;
-@property (strong, nonatomic) NSString *isfamily;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *point;
+@property (strong, nonatomic) NSString *accuracy;
 
+@property (strong, nonatomic) AsynchronousImage *async_image;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImageView *imageView;
+
+- (UIImageView *)getImageWithMaximumWidth:(int)width;
+
+
+- (id)initWithImage:(UIImage *)_image;
+- (id)initWithURL:(NSString *)url;
+- (id) initWithItem:(NSDictionary *)item;
+
+- (float)getWidth;
+- (float)getHeight;
+
+- (void)setWidth:(float)_width;
+
+- (void)setImage:(UIImage *)loaded_image;
+
+- (UIImageView *)getImage;
 
 @end

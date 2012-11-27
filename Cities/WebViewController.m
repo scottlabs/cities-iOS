@@ -1,21 +1,18 @@
 //
-//  NavigationController.m
+//  WikipediaViewController.m
 //  Cities
 //
-//  Created by Kevin Scott on 11/13/12.
+//  Created by Kevin Scott on 11/18/12.
 //  Copyright (c) 2012 Kevin Scott. All rights reserved.
 //
 
-#import "NavigationController.h"
+#import "WebViewController.h"
 
-
-
-@interface NavigationController ()
+@interface WebViewController ()
 
 @end
 
-
-@implementation NavigationController
+@implementation WebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,10 +26,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
-    [self.navigationBar setHidden:TRUE];
-    [self.navigationBar setTintColor:[UIColor brownColor]];
-    	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor blackColor];
+    self.navigationController.navigationBar.backItem.title = @"Back to Feed";
+    self.navigationController.title = @"New York";
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

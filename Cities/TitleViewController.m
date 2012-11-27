@@ -1,27 +1,25 @@
 //
-//  NavigationController.m
+//  TitleControllerViewController.m
 //  Cities
 //
-//  Created by Kevin Scott on 11/13/12.
+//  Created by Kevin Scott on 11/26/12.
 //  Copyright (c) 2012 Kevin Scott. All rights reserved.
 //
 
-#import "NavigationController.h"
+#import "TitleViewController.h"
 
-
-
-@interface NavigationController ()
+@interface TitleViewController ()
 
 @end
 
-
-@implementation NavigationController
+@implementation TitleViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     }
     return self;
 }
@@ -29,10 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
-    [self.navigationBar setHidden:TRUE];
-    [self.navigationBar setTintColor:[UIColor brownColor]];
-    	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

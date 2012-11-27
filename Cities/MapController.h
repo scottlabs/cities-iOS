@@ -10,10 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "AddressAnnotation.h"
 #import "CityFeedController.h"
+#import "City.h"
 @interface MapController : UIViewController <MKMapViewDelegate> {
     MKMapView *mapView;
+    NSMutableArray *cities;
 }
 
 @property (nonatomic, retain) MKMapView *mapView;
+- (void)loadCities;
 
 @end

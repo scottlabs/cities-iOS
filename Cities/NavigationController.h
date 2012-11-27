@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MapController.h"
+#import "TitleViewController.h"
 @interface NavigationController : UINavigationController {
     //MapController *mapController;
 }

@@ -14,10 +14,15 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize mapController;
+
 @synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    RKLogConfigureByName("RestKit", RKLogLevelCritical);
+    RKLogConfigureByName("RestKit/Network/Reachability", RKLogLevelCritical);
+    RKLogConfigureByName("RestKit/Support/Cache", RKLogLevelCritical);    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
@@ -29,28 +34,47 @@
     
     
     
+    TitleViewController *titleViewController = [[TitleViewController alloc]initWithNibName:@"TitleViewController" bundle:nil];
+    mapController = [[MapController alloc] init];
+
+    self.window.rootViewController = navigationController;
     
-    MapController *mapController = [[MapController alloc] init];
+
+    [self.navigationController pushViewController:titleViewController animated:YES];
+    
+    //[self performSelector:@selector(pushMap) withObject:self afterDelay:1.4];
+    [self performSelector:@selector(pushMap) withObject:self afterDelay:0.1];
+
+
+
 
     
-    [self.navigationController pushViewController:mapController animated:YES];
-
+    
     
     
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
 
     
-    
-
-
-    //[objectManager loadObjectsAtResourcePath:@"/status/user_timeline/RestKit" delegate:self];
-
-
-
-
     return YES;
 }
+ 
+ - (void)pushMap {
+     //self.window.rootViewController = navigationController;
+     //mapController.view.frame = CGRectMake(0, -20, 320, 480);
+     
+     CATransition *transition = [CATransition animation];
+     transition.duration = 2.4;
+     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+     transition.type = kCATransitionPush;
+     transition.subtype = kCATransitionFade;
+     transition.delegate = self;
+     
+     [self.navigationController.view.layer addAnimation:transition forKey:nil];
+     
+     self.navigationController.navigationBarHidden = NO;
+     [self.navigationController pushViewController:mapController animated:YES];
+ }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
